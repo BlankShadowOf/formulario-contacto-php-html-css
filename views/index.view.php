@@ -13,6 +13,7 @@
 			<h1>Contacto</h1>
 			<input type="text" class="form-control" name="nombre" placeholder="Nombre:" value="<?php if(!$enviado && isset($nombre)) echo $nombre; ?>" id="nombre">
 			<input type="text" class="form-control" name="correo" placeholder="Correo:" value="<?php if(!$enviado && isset($correo)) echo $correo; ?>" id="correo">
+			<input type="text" class="form-control" name="asunto" placeholder="Asunto:" value="<?php if(!$enviado && isset($asunto)) echo $asunto; ?>" id="asunto">
 			<textarea name="mensaje" class="form-control" id="mensaje" placeholder="Mensaje:"><?php if(!$enviado && isset($mensaje)) echo $mensaje; ?></textarea>
 
 			<?php if (!empty($errores)): ?>

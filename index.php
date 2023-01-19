@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
 	$nombre = $_POST['nombre'];
 	$correo = $_POST['correo'];
 	$mensaje = $_POST['mensaje'];
+	$asunto = $_POST['asunto'];
 
 	if (!empty($nombre)) {
 		$nombre = trim($nombre);
@@ -32,14 +33,22 @@ if (isset($_POST['submit'])) {
 		$errores .= 'Por favor ingresa un mensaje.<br>';
 	}
 
+	if (!empty($asunto)) {
+		$asunto = htmlspecialchars($asunto);
+		$asunto = trim($asunto);
+		$asunto = stripslashes($asunto);
+	} else {
+		$errores .= 'Por favor ingresa un asunto.<br>';
+	}
+
 	if (!$errores) {
 		$enviar_a = 'tucorreo@tuempresa.com';
-		$asunto = 'Correo enviado desde MiPagina.com';
+		$asunto_preparado = $asunto;
 		$mensaje_preparado = 'De: ' . $nombre . '\n';
 		$mensaje_preparado .= 'Correo: ' . $correo . '\n';
 		$mensaje_preparado .= 'Mensaje: ' . $mensaje;
 
-		mail($enviar_a,$asunto,$mensaje_preparado);
+		mail($enviar_a,$asunto_preparado,$mensaje_preparado);
 		$enviado = 'true';
 	}
 }
